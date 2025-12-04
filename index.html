@@ -284,6 +284,21 @@ void loop() {
                     (0.4 * first + 0.3 * second + 0.3 * third);
 
               int bpm = round(print_value); 
+              if (bpm > 100) {
+                digitalWrite(redLED, HIGH);
+                digitalWrite(yellowLED, LOW);
+                digitalWrite(greenLED, LOW);
+              }
+              else if (bpm<= 100 && bpm >= 70) {
+                digitalWrite(redLED, LOW);
+                digitalWrite(yellowLED, LOW);
+                digitalWrite(greenLED, HIGH);
+              }
+              else { 
+                digitalWrite(redLED, LOW);
+                digitalWrite(yellowLED, HIGH);
+                digitalWrite(greenLED, LOW);
+              }
               lcd.clear();
               lcd.print("Heart Monitor");
                 lcd.setCursor(0, 1);
@@ -321,6 +336,7 @@ void loop() {
         ptr = (ptr + 1) % samp_siz;
     }
 }
+
 
     </code></pre>
 
